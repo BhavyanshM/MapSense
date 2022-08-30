@@ -1,0 +1,7 @@
+Format Version	1.23	Take Name	Take 2022-05-02 03.27.18 PM	Take Notes		Capture Frame Rate	120.000000	Export Frame Rate	120.000000	Capture Start Time	2022-05-02 03.27.19.810 PM	Capture Start Frame	231020	Total Frames in Take	1505	Total Exported Frames	1505	Rotation Type	Quaternion	Length Units	Millimeters	Coordinate Space	Global	
+	
+	Type	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	Marker	
+	Name	Atlas:Marker1	Atlas:Marker1	Atlas:Marker1	Atlas:Marker2	Atlas:Marker2	Atlas:Marker2	Atlas:Marker3	Atlas:Marker3	Atlas:Marker3	Unlabeled 1003	Unlabeled 1003	Unlabeled 1003	Unlabeled 1005	Unlabeled 1005	Unlabeled 1005	Unlabeled 1006	Unlabeled 1006	Unlabeled 1006	Unlabeled 1007	Unlabeled 1007	Unlabeled 1007	
+	ID	"C66A0"	"C66A0"	"C66A0"	"C6D90"	"C6D90"	"C6D90"	"C6DB0"	"C6DB0"	"C6DB0"	"C5E80"	"C5E80"	"C5E80"	"C7620"	"C7620"	"C7620"	"C7630"	"C7630"	"C7630"	"C7640"	"C7640"	"C7640"	
+		Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	Position	
+Frame	Time (Seconds)	X	Y	Z	X	Y	Z	X	Y	Z	X	Y	Z	X	Y	Z	X	Y	Z	X	Y	Z	
