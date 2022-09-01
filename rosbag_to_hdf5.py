@@ -3,7 +3,7 @@ import h5py
 import sys
 import ros_numpy
 import numpy as np
-import sensor_msgs
+import cv2
 
 def rosbag_info(filename):
     bag = rosbag.Bag(filename)
@@ -19,6 +19,8 @@ def convert(filename, h5_filename, topics):
 
     data = h5py.File(h5_filename, 'w')
     
+    print("Writing to File:", h5_filename)
+
     for topicname in topics:
         grp = data.create_group(topicname)
 
@@ -38,19 +40,19 @@ def convert(filename, h5_filename, topics):
             timestamps.append(t.to_sec())
 
             if 'sensor_msgs/Image' == msg._type:
-
-                print("Image", topic, t.to_sec())
-
                 img = np.frombuffer(msg.data, dtype=np.uint8).reshape(msg.height, msg.width, -1)
-
-                print("Image:", img.shape)
-
                 data.create_dataset(topic + '/' + str(count), shape=(msg.height, msg.width, 2), data=img)
                 count += 1
+
+                print("Image: {}\t{}\t{}".format(topic, t.to_sec(), img.shape, count))
                 
 
             if 'sensor_msgs/CompressedImage' == msg._type:
-                print("CompressedImage", topic, t)  
+                img = np.frombuffer(msg.data, dtype=np.uint8).reshape(msg.height, msg.width, -1)
+                data.create_dataset(topic + '/' + str(count), shape=(msg.height, msg.width, 2), data=img)
+                count += 1
+
+                print("Image: {}\t{}\t{}".format(topic, t.to_sec(), img.shape, count))
 
             if 'sensor_msgs/CameraInfo' == msg._type:
                 print("CameraInfo", topic, t)  
@@ -74,9 +76,30 @@ def convert(filename, h5_filename, topics):
     bag.close()
     data.close()
 
+def play(h5_filename):
+    data = h5py.File(h5_filename, 'r')
+
+    n_imgs = len(data['/chest_l515/depth/image_rect_raw'].keys())
+
+    print("Total Images: ", n_imgs)
+
+    for i in range(n_imgs - 2):
+        img = data['/chest_l515/depth/image_rect_raw/' + str(i)][:]
+
+        print(img)
+
+        cv2.imshow("Image", img[:,:,0])
+        code = cv2.waitKeyEx(30)
+        if code == 113:
+            exit()
+
+        print("Image Loaded: ", img.shape, code)
+
+    data.close()
+
 if __name__ == "__main__":
     
-    user = 'quantum'
+    user = 'bmishra'
 
     path = '/home/' + user + '/Workspace/Data/Atlas_Logs/ROSBags/'
 
@@ -93,8 +116,8 @@ if __name__ == "__main__":
                                 '/chest_l515/depth/image_rect_raw'
                             ])  
 
-        if sys.argv[1] == 'rosbag_info':
-            rosbag_info(path)
+        if sys.argv[1] == 'play':
+            play(h5_filename)
 
         if sys.argv[1] == 'rosbag_info':
             rosbag_info(path)
