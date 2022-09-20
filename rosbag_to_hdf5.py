@@ -99,7 +99,7 @@ def play(h5_filename):
 
 if __name__ == "__main__":
     
-    user = 'bmishra'
+    user = 'quantum'
 
     path = '/home/' + user + '/Workspace/Data/Atlas_Logs/ROSBags/'
 

@@ -56,5 +56,117 @@ def plot_data(name):
 	# plt.plot(data[:,1], data[:,2], 'ro')
 	# plt.show()
 
+def load_data(path, start=0, end=2000, verbose=False):
+	f = open(path, 'r')
+
+	data = []
+
+	for i, line in enumerate(f):
+
+		if i == 3:
+			print('----------------------------------------------------------------------------------')
+			print(line)
+			print('----------------------------------------------------------------------------------')
+
+		if i > 6 and i < end:
+
+			words = line.split(',')
+
+			for j in range(len(words)):
+				if words[j] == '':
+					words[j] = '0'
+
+			if verbose == True:
+				print('----------------------------------------------------------------------------------')
+				print("Line: {} {}".format(i, len(words)))
+				print(line)
+				print('----------------------------------------------------------------------------------')
+
+			data.append(np.array([	float(words[1]),
+									float(words[2]), float(words[3]), float(words[4]),
+									float(words[5]), float(words[6]), float(words[7]),
+									float(words[8]), float(words[9]), float(words[10])]))
+
+	matrix = np.vstack(data)
+
+	print(matrix.shape)
+
+	return matrix
+
+def load_se_data(path, start=0, end=2000, verbose=False):
+	f = open(path, 'r')
+
+	data = []
+
+	for i, line in enumerate(f):
+
+		if i == 0:
+			print('----------------------------------------------------------------------------------')
+			print(line)
+			print('----------------------------------------------------------------------------------')
+
+		if i > start and i < end:
+
+			words = line.split(',')
+
+			for j in range(len(words)):
+				if words[j] == '':
+					words[j] = '0'
+
+			if verbose == True:
+				print('----------------------------------------------------------------------------------')
+				print("Line: {} {}".format(i, len(words)))
+				print(line)
+				print('----------------------------------------------------------------------------------')
+
+			data.append(np.array([	float(words[0]),
+									float(words[1]), float(words[2]), float(words[3])]))
+
+	matrix = np.vstack(data)
+
+	print(matrix.shape)
+
+	return matrix
+
+
+def plot_marker(data, se_data, marker_id):
+	
+	f, ax = plt.subplots(3, 1, figsize=(30,10))
+
+	
+	# ax[0].plot(data[:,0], data[:,marker_id * 3 + 1], 'b-')
+	# ax[1].plot(data[:,0], data[:,marker_id * 3 + 2], 'b-')
+	# ax[2].plot(data[:,0], data[:,marker_id * 3 + 3], 'b-')
+	
+	
+	ax[0].plot(se_data[:,0], se_data[:,1], 'r-')
+	ax[1].plot(se_data[:,0], se_data[:,2], 'r-')
+	ax[2].plot(se_data[:,0], se_data[:,3], 'r-')
+
+	plt.show()
+
+def plot_all(data):
+	
+	f, ax = plt.subplots(data.shape[1], 1, figsize=(30,10))
+
+	
+	for i in range(data.shape[1]):
+		ax[i].plot(data[:,0], data[:,i], 'b-')
+
+	plt.show()
+
+def plot_marker_3d(data, marker_id):
+	
+	ax = plt.axes(projection='3d')
+
+	
+	ax.plot(data[:,marker_id * 3 + 1], data[:,marker_id * 3 + 2], data[:,marker_id * 3 + 3], 'b-')
+
+	plt.show()
+
 if __name__ == "__main__":
-	plot_data('Take 2022-04-30 06.08.04 PM')
+	data = load_data('/home/quantum/Workspace/Data/MotionCapCsv/IHMC_Run_6.csv', start=0, end=2000, verbose=False)
+	se_data = load_se_data('/home/quantum/Workspace/Data/Atlas_Logs/Run_1/Export/data.scs2.csv', start=0, end=40000, verbose=False)
+
+	plot_marker(data, se_data, 0)
+

@@ -32,3 +32,4 @@ elapsed = time.time() - start
 logger.info("%d frames" % frames)
 logger.info("%4.1f FPS, elapsed time: %4.2f seconds" % (frames / elapsed, elapsed))
 del videoCapture
+
