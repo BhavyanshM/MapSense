@@ -131,23 +131,23 @@ def load_se_data(path, start=0, end=2000, verbose=False):
 
 def plot_marker(data, se_data, marker_id):
 	
-	f, ax = plt.subplots(3, 1, figsize=(30,10))
+	f, ax = plt.subplots(3, 1, figsize=(15,8))
 
 	
-	# ax[0].plot(data[:,0], data[:,marker_id * 3 + 1], 'b-')
-	# ax[1].plot(data[:,0], data[:,marker_id * 3 + 2], 'b-')
-	# ax[2].plot(data[:,0], data[:,marker_id * 3 + 3], 'b-')
+	ax[0].plot(data[:,0], data[:,marker_id * 3 + 1], 'b-')
+	ax[1].plot(data[:,0], data[:,marker_id * 3 + 2], 'b-')
+	ax[2].plot(data[:,0], data[:,marker_id * 3 + 3], 'b-')
 	
 	
-	ax[0].plot(se_data[:,0], se_data[:,1], 'r-')
-	ax[1].plot(se_data[:,0], se_data[:,2], 'r-')
-	ax[2].plot(se_data[:,0], se_data[:,3], 'r-')
+	# ax[0].plot(se_data[:,0], se_data[:,1], 'r-')
+	# ax[1].plot(se_data[:,0], se_data[:,2], 'r-')
+	# ax[2].plot(se_data[:,0], se_data[:,3], 'r-')
 
 	plt.show()
 
 def plot_all(data):
 	
-	f, ax = plt.subplots(data.shape[1], 1, figsize=(30,10))
+	f, ax = plt.subplots(data.shape[1], 1, figsize=(10,8))
 
 	
 	for i in range(data.shape[1]):
@@ -155,18 +155,24 @@ def plot_all(data):
 
 	plt.show()
 
-def plot_marker_3d(data, marker_id):
+def plot_marker_3d(data, se_data, marker_id):
 	
 	ax = plt.axes(projection='3d')
 
 	
-	ax.plot(data[:,marker_id * 3 + 1], data[:,marker_id * 3 + 2], data[:,marker_id * 3 + 3], 'b-')
+	ax.plot(data[:,marker_id * 3 + 1], data[:,marker_id * 3 + 2], data[:,marker_id * 3 + 3], 'r-')
+
+	ax.set_xlim(2,6)
+	ax.set_ylim(0,4)
+	ax.set_zlim(-2,2)
+
+	ax.plot(se_data[:,1], se_data[:,2], se_data[:,3], 'b-')
 
 	plt.show()
 
 if __name__ == "__main__":
-	data = load_data('/home/quantum/Workspace/Data/MotionCapCsv/IHMC_Run_6.csv', start=0, end=2000, verbose=False)
-	se_data = load_se_data('/home/quantum/Workspace/Data/Atlas_Logs/Run_1/Export/data.scs2.csv', start=0, end=40000, verbose=False)
+	data = load_data('/home/bmishra/Workspace/Data/Atlas_Logs/MotionCapCsv/IHMC_Run_3.csv', start=0, end=20000, verbose=False)
+	se_data = load_se_data('/home/bmishra/Workspace/Data/Atlas_Logs/Logs/Run_1/Export/data.scs2.csv', start=0, end=40000, verbose=False)
 
 	plot_marker(data, se_data, 0)
 
