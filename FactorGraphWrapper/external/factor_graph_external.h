@@ -5,11 +5,11 @@
 class FactorGraphExternal
 {
     public:
-        void AddPriorPoseFactor(int index, float* pose);
+        void AddPriorPoseFactor_Pose3(int index, float* pose);
 
-        void AddOdometryFactor(gtsam::Pose3 odometry, int poseId);
+        void AddOdometryFactor_Pose3(float* odometry, int poseId);
 
-        void AddOrientedPlaneFactor(gtsam::Vector4 lmMean, int lmId, int poseIndex);
+        void AddOrientedPlaneFactor_Vector4(float* lmMean, int lmId, int poseIndex);
 
         void optimize();
 
@@ -17,19 +17,13 @@ class FactorGraphExternal
 
         void ClearISAM2();
 
-        void SetPoseInitialValue(int index, gtsam::Pose3 value);
+        void SetPoseInitialValue_Pose3(int index, float* value);
 
-        void SetOrientedPlaneInitialValue(int landmarkId, gtsam::OrientedPlane3 value);
+        void SetOrientedPlaneInitialValue_OrientedPlane3(int landmarkId, float* value);
 
-        const gtsam::Values& GetResults() const {return result;};
+        void createOdometryNoiseModel_Vector6(float* odomVariance);
 
-        const gtsam::Values& GetInitialValues() const {return initial;};
-
-        const gtsam::NonlinearFactorGraph& GetFactorGraph();
-
-        void createOdometryNoiseModel(gtsam::Vector6 odomVariance);
-
-        void createOrientedPlaneNoiseModel(gtsam::Vector3 lmVariances);
+        void createOrientedPlaneNoiseModel_Vector3(float* lmVariances);
 
     private:
         FactorGraphHandler fgh;
