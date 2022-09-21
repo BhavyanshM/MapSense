@@ -4,7 +4,7 @@
 
 void FactorGraphExternal::AddPriorPoseFactor_Pose3(int index, float* pose)
 {
-        
+    fgh.
 }
 
 void FactorGraphExternal::AddOdometryFactor_Pose3(float* odometry, int poseId)
@@ -17,7 +17,7 @@ void FactorGraphExternal::AddOrientedPlaneFactor_Vector4(float* lmMean, int lmId
 
 }
 
-void FactorGraphExternal::optimize()
+void FactorGraphExternal::Optimize()
 {
 
 }
@@ -42,12 +42,12 @@ void FactorGraphExternal::SetOrientedPlaneInitialValue_OrientedPlane3(int landma
 
 }
 
-void FactorGraphExternal::createOdometryNoiseModel_Vector6(float* odomVariance)
+void FactorGraphExternal::CreateOdometryNoiseModel_Vector6(float* odomVariance)
 {
 
 }
 
-void FactorGraphExternal::createOrientedPlaneNoiseModel_Vector3(float* lmVariances)
+void FactorGraphExternal::CreateOrientedPlaneNoiseModel_Vector3(float* lmVariances)
 {
 
 }

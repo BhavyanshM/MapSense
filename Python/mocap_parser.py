@@ -133,15 +133,18 @@ def plot_marker(data, se_data, marker_id):
 	
 	f, ax = plt.subplots(3, 1, figsize=(15,8))
 
+	ax[0].set_title("Pelvis Position (X)")
+	ax[1].set_title("Pelvis Position (Y)")
+	ax[2].set_title("Pelvis Position (Z)")
+
+	# ax[0].plot(data[:,0], data[:,marker_id * 3 + 1], 'b-')
+	# ax[1].plot(data[:,0], data[:,marker_id * 3 + 2], 'b-')
+	# ax[2].plot(data[:,0], data[:,marker_id * 3 + 3], 'b-')
 	
-	ax[0].plot(data[:,0], data[:,marker_id * 3 + 1], 'b-')
-	ax[1].plot(data[:,0], data[:,marker_id * 3 + 2], 'b-')
-	ax[2].plot(data[:,0], data[:,marker_id * 3 + 3], 'b-')
 	
-	
-	# ax[0].plot(se_data[:,0], se_data[:,1], 'r-')
-	# ax[1].plot(se_data[:,0], se_data[:,2], 'r-')
-	# ax[2].plot(se_data[:,0], se_data[:,3], 'r-')
+	ax[0].plot(se_data[:,0], se_data[:,1], 'r-')
+	ax[1].plot(se_data[:,0], se_data[:,2], 'r-')
+	ax[2].plot(se_data[:,0], se_data[:,3], 'r-')
 
 	plt.show()
 

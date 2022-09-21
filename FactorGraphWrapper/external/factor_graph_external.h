@@ -11,7 +11,7 @@ class FactorGraphExternal
 
         void AddOrientedPlaneFactor_Vector4(float* lmMean, int lmId, int poseIndex);
 
-        void optimize();
+        void Optimize();
 
         void OptimizeISAM2(uint8_t numberOfUpdates);
 
@@ -21,9 +21,9 @@ class FactorGraphExternal
 
         void SetOrientedPlaneInitialValue_OrientedPlane3(int landmarkId, float* value);
 
-        void createOdometryNoiseModel_Vector6(float* odomVariance);
+        void CreateOdometryNoiseModel_Vector6(float* odomVariance);
 
-        void createOrientedPlaneNoiseModel_Vector3(float* lmVariances);
+        void CreateOrientedPlaneNoiseModel_Vector3(float* lmVariances);
 
     private:
         FactorGraphHandler fgh;
