@@ -1,19 +1,53 @@
-        void AddPriorPoseFactor_Pose3(int index, float* pose);
+#pragma once
 
-        void AddOdometryFactor_Pose3(float* odometry, int poseId);
+#include "factor_graph_external.h"
 
-        void AddOrientedPlaneFactor_Vector4(float* lmMean, int lmId, int poseIndex);
+void FactorGraphExternal::AddPriorPoseFactor_Pose3(int index, float* pose)
+{
+        
+}
 
-        void optimize();
+void FactorGraphExternal::AddOdometryFactor_Pose3(float* odometry, int poseId)
+{
 
-        void OptimizeISAM2(uint8_t numberOfUpdates);
+}
 
-        void ClearISAM2();
+void FactorGraphExternal::AddOrientedPlaneFactor_Vector4(float* lmMean, int lmId, int poseIndex)
+{
 
-        void SetPoseInitialValue_Pose3(int index, float* value);
+}
 
-        void SetOrientedPlaneInitialValue_OrientedPlane3(int landmarkId, float* value);
+void FactorGraphExternal::optimize()
+{
 
-        void createOdometryNoiseModel_Vector6(float* odomVariance);
+}
 
-        void createOrientedPlaneNoiseModel_Vector3(float* lmVariances);
+void FactorGraphExternal::OptimizeISAM2(uint8_t numberOfUpdates)
+{
+
+}
+
+void FactorGraphExternal::ClearISAM2()
+{
+
+}
+
+void FactorGraphExternal::SetPoseInitialValue_Pose3(int index, float* value)
+{
+
+}
+
+void FactorGraphExternal::SetOrientedPlaneInitialValue_OrientedPlane3(int landmarkId, float* value)
+{
+
+}
+
+void FactorGraphExternal::createOdometryNoiseModel_Vector6(float* odomVariance)
+{
+
+}
+
+void FactorGraphExternal::createOrientedPlaneNoiseModel_Vector3(float* lmVariances)
+{
+
+}

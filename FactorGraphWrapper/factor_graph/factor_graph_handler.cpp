@@ -1,5 +1,6 @@
+#pragma once
 
-#include "FactorGraphHandler.h"
+#include "factor_graph_handler.h"
 
 FactorGraphHandler::FactorGraphHandler()
 {
@@ -88,7 +89,6 @@ void FactorGraphHandler::OptimizeISAM2(uint8_t numberOfUpdates)
 
 void FactorGraphHandler::ClearISAM2()
 {
-   LOG("ClearISAM2()\n");
    initial.clear();
    graph.resize(0);
 }
@@ -106,8 +106,8 @@ void FactorGraphHandler::SLAMTest()
    int currentPoseId = 1;
 
    Pose3 init_pose(Rot3::Ypr(0.0, 0.0, 0.0), Point3(0.0, 0.0, 0.0));
-   AddPriorPoseFactor(currentPoseId, Pose3::identity());
-   SetPoseInitialValue(currentPoseId, Pose3::identity());
+   AddPriorPoseFactor(currentPoseId, Pose3::Identity());
+   SetPoseInitialValue(currentPoseId, Pose3::Identity());
 
    AddOrientedPlaneFactor(Vector4(1, 0, 0, -3), 0, currentPoseId);
    SetOrientedPlaneInitialValue(0, gtsam::OrientedPlane3(Vector4(0.8, 0.1, 0.1, -2.9)));

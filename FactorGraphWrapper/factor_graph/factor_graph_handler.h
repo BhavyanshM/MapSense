@@ -1,5 +1,4 @@
-#ifndef FACTORGRAPHSLAM_H
-#define FACTORGRAPHSLAM_H
+#pragma once
 
 #include <gtsam/slam/OrientedPlane3Factor.h>
 #include <gtsam/slam/PriorFactor.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "factor_graph/factor_graph_handler.h"
+#include "factor_graph_handler.h"
 
 class FactorGraphExternal
 {
@@ -27,4 +27,4 @@ class FactorGraphExternal
 
     private:
         FactorGraphHandler fgh;
-}
+};
