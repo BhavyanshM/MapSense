@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 def plot_pelvis_position(data):
     t = np.linspace(0, data.shape[0], data.shape[0])
 
-    fig, axs = plt.subplots(3, figsize=(15,30))
+    fig, axs = plt.subplots(3, figsize=(30,10))
     fig.suptitle('Pelvis Position Plots')
 
-    axs[0].set_title('Pelvis Position )X')
-    axs[1].set_title('Pelvis Position )X')
-    axs[2].set_title('Pelvis Position )X')
+    axs[0].set_title('Pelvis Position (X)')
+    axs[1].set_title('Pelvis Position (Y)')
+    axs[2].set_title('Pelvis Position (Z)')
 
     axs[0].plot(t, data[:,0], 'r-', markersize=1)
     axs[1].plot(t, data[:,1], 'r-', markersize=1)
@@ -31,7 +31,7 @@ def get_data(data, namespace):
     return data_block
 
 if __name__ == '__main__':
-    path = '/home/bmishra/Workspace/Data/Sensor_Logs/experimental.h5'
+    path = '/home/quantum/Workspace/Data/Sensor_Logs/experimental.h5'
 
     data = h5py.File(path, 'r')
 
