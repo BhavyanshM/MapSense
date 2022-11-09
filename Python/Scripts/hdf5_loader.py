@@ -4,25 +4,31 @@ import numpy as np
 
 data = h5py.File('/home/quantum/Workspace/Data/Sensor_Logs/experimental.hdf5', 'r')
 
-print(data['/d435/video/'].keys())
+print(data['/d435/color/'].keys())
 
-for i in range(len(data['/d435/video/'].keys())):
+for i in range(len(data['/d435/color/'].keys())):
 
-    m = data['/d435/video/' + str(i)][:].byteswap().view('uint8')
+    color = data['/d435/color/' + str(i)][:].byteswap().view('uint8')
+    depth = data['/d435/depth/' + str(i)][:].byteswap().view('uint8')
     # img = cv2.imdecode()
 
-    print(m[-10:])
+    print(color[-10:])
 
-    print("Shape: ", m.shape, " DType:", m.dtype)
+    print("Shape: ", color.shape, " DType:", color.dtype)
 
-    image = np.asarray(m, dtype=np.uint8)
+    color_image = np.asarray(color, dtype=np.uint8)
+    depth_image = np.asarray(depth, dtype=np.uint8)
 
 
     # use imdecode function
-    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+    color_image = cv2.imdecode(color_image, cv2.IMREAD_COLOR)
+    depth_image = cv2.imdecode(depth_image, cv2.IMREAD_COLOR)
 
-    print("Image: ", image.shape)
+    print("Shapes: ", color_image.shape, depth_image.shape)
 
 
-    cv2.imshow("Image", image)
-    cv2.waitKey(100)
+    cv2.imshow("color_image", color_image)
+    cv2.imshow("depth_image", depth_image)
+    code = cv2.waitKeyEx(30)
+    if code == 113:
+        exit()
