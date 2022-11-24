@@ -1,19 +1,36 @@
 import cv2
 import os
 
-path = '/home/quantum/Workspace/Storage/Other/Temp/dataset/sequences/00/image_0/'
+class VisualSLAMDemo:
 
-files = sorted(os.listdir(path))
+    def __init__(self) -> None:
+        
+        self.left_dir = "image_0"
+        self.right_dir = "image_1"
 
-for i in range(len(files)):
+        self.data_dir = '/home/quantum/Workspace/Storage/Other/Temp/dataset/sequences/00/'
 
-    print('Files:', files[i])
+        self.files = sorted(os.listdir(self.data_dir + self.left_dir))
 
-    img = cv2.imread(path + files[i])
+    def run(self):
 
-    cv2.imshow('Window', img)
+        for i in range(len(self.files)):
 
-    code = cv2.waitKeyEx(1)
+            print('Files:', self.files[i])
 
-    if code == 113:
-        exit()
+            left_img = cv2.imread(self.data_dir + self.left_dir + '/' + self.files[i])
+            right_img = cv2.imread(self.data_dir + self.right_dir + '/' + self.files[i])
+
+            cv2.imshow('Left', left_img)
+            cv2.imshow('Right', right_img)
+
+            code = cv2.waitKeyEx(1)
+
+            if code == 113:
+                exit()
+
+
+if __name__ == '__main__':
+    demo = VisualSLAMDemo()
+
+    demo.run()
