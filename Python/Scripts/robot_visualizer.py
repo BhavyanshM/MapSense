@@ -12,6 +12,10 @@ def plot_pelvis_position(data):
     axs[1].set_title('Pelvis Position (Y)')
     axs[2].set_title('Pelvis Position (Z)')
 
+    axs[0].set_ylim(-4, 4)
+    axs[1].set_ylim(-4, 4)
+    axs[2].set_ylim(-4, 4)
+
     axs[0].plot(t, data[:,0], 'r-', markersize=1)
     axs[1].plot(t, data[:,1], 'r-', markersize=1)
     axs[2].plot(t, data[:,2], 'r-', markersize=1)
@@ -20,6 +24,8 @@ def plot_pelvis_position(data):
 
 def get_data(data, namespace):
     ds = []
+
+    print(data[namespace].keys())
 
     keys = list(map(str, sorted(list(map(int, data[namespace].keys())))))
 
@@ -31,7 +37,7 @@ def get_data(data, namespace):
     return data_block
 
 if __name__ == '__main__':
-    path = '/home/quantum/Workspace/Data/Sensor_Logs/experimental.h5'
+    path = '/home/quantum/.ihmc/logs/20221215_015346_PerceptionLog.hdf5'
 
     data = h5py.File(path, 'r')
 

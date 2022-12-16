@@ -2,14 +2,14 @@ import h5py
 import cv2
 import numpy as np
 
-data = h5py.File('/home/quantum/Workspace/Data/Sensor_Logs/experimental.hdf5', 'r')
+data = h5py.File('/home/quantum/.ihmc/logs/perception/20221215_234308_PerceptionLog.hdf5', 'r')
 
-print(data['/d435/color/'].keys())
+print(data['/l515/color/'].keys())
 
-for i in range(len(data['/d435/color/'].keys())):
+for i in range(len(data['/l515/color/'].keys())):
 
-    color = data['/d435/color/' + str(i)][:].byteswap().view('uint8')
-    depth = data['/d435/depth/' + str(i)][:].byteswap().view('uint8')
+    color = data['/l515/color/' + str(i)][:].byteswap().view('uint8')
+    depth = data['/l515/depth/' + str(i)][:].byteswap().view('uint8')
     # img = cv2.imdecode()
 
     print(color[-10:])
