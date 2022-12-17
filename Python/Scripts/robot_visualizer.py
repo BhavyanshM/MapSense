@@ -37,17 +37,22 @@ def get_data(data, namespace):
     return data_block
 
 if __name__ == '__main__':
-    path = '/home/quantum/.ihmc/logs/20221215_015346_PerceptionLog.hdf5'
+    path = '/home/bmishra/Workspace/Data/Sensor_Logs/Depth/Good/'
 
-    data = h5py.File(path, 'r')
+    file = '20221216_143619_PerceptionLog.hdf5'
 
+    data = h5py.File(path + file, 'r')
+
+    position = get_data(data, '/l515/sensor/position/')
     
-    position = get_data(data, '/robot/root/position/')
-    orientation = get_data(data, '/robot/root/orientation/')
+    print(position)
+
+    # position = get_data(data, '/robot/root/position/')
+    # orientation = get_data(data, '/robot/root/orientation/')
     
-    joint_angles = get_data(data, '/robot/joint_angles/')
-    joint_velocities = get_data(data, '/robot/joint_velocities/')
-    joint_torques = get_data(data, '/robot/joint_torques/')
+    # joint_angles = get_data(data, '/robot/joint_angles/')
+    # joint_velocities = get_data(data, '/robot/joint_velocities/')
+    # joint_torques = get_data(data, '/robot/joint_torques/')
     
     plot_pelvis_position(position)
     # plot_joint_angles(orientation)
